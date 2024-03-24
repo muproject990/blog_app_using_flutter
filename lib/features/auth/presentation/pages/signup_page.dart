@@ -11,9 +11,21 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  // !TextEditiong controller
+  //! Now using TextEditiong controller For accesing value in the text Box
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final nameController = TextEditingController();
+
   final formKey = GlobalKey<FormState>();
   @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     // it will validate every form feild
 
@@ -33,15 +45,25 @@ class _SignUpPageState extends State<SignUpPage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const AuthField(hintText: "Name"),
+              AuthField(
+                hintText: "Name",
+                controller: nameController,
+              ),
               const SizedBox(
                 height: 15,
               ),
-              const AuthField(hintText: "Password"),
+              AuthField(
+                hintText: "Email",
+                controller: emailController,
+              ),
               const SizedBox(
                 height: 15,
               ),
-              const AuthField(hintText: "Email"),
+              AuthField(
+                isObscureText: true,
+                hintText: "Password",
+                controller: passwordController,
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -51,7 +73,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               RichText(
                 text: TextSpan(
-                  text: "Don\'t have and account ? ",
+                  text: "Already have an account ? ",
                   style: Theme.of(context).textTheme.titleMedium,
                   children: [
                     TextSpan(
