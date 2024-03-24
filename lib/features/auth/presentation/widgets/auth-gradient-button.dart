@@ -2,7 +2,8 @@ import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
 
 class AuthGradientBtn extends StatelessWidget {
-  const AuthGradientBtn({super.key});
+  final String buttonText;
+  const AuthGradientBtn({super.key, required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +26,9 @@ class AuthGradientBtn extends StatelessWidget {
             fixedSize: const Size(396, 55),
             backgroundColor: AppPallete.transparentColor,
             shadowColor: AppPallete.transparentColor),
-        child: const Text(
-          "Sign Up",
-          style: TextStyle(
+        child: Text(
+          buttonText,
+          style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
           ),

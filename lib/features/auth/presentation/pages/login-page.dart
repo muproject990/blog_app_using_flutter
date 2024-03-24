@@ -67,7 +67,9 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 20,
               ),
-              const AuthGradientBtn(),
+              const AuthGradientBtn(
+                buttonText: 'Sign In',
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -77,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: Theme.of(context).textTheme.titleMedium,
                   children: [
                     TextSpan(
-                      text: "Sign In",
+                      text: "Sign Up",
                       style: Theme.of(context)
                           .textTheme
                           .titleMedium
