@@ -7,7 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class UserSignUp implements UseCase<String, UserSignUpParams> {
   final AuthRepository authRepository;
 
-  const UserSignUp({required this.authRepository});
+  const UserSignUp(this.authRepository);
 
   @override
   Future<Either<Failure, String>> call(UserSignUpParams params) async {
