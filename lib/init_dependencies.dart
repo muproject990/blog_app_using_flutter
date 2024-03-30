@@ -1,3 +1,4 @@
+import 'package:blog_app/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:blog_app/core/secrets/app-secret.dart';
 import 'package:blog_app/core/usecase/user-login.dart';
 import 'package:blog_app/features/auth/data/datasources/auth-remote-data-source.dart';
@@ -22,6 +23,10 @@ Future<void> init_dependencies() async {
 
 void _initAuth() {
   serviceLocator
+    // core
+    ..registerLazySingleton(
+      () => AppUserCubit(),
+    )
     // DataSource
     ..registerFactory<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImpl(
@@ -56,6 +61,7 @@ void _initAuth() {
         userSignUp: serviceLocator(),
         userLogin: serviceLocator(),
         currentUser: serviceLocator(),
+        appUserCubit: serviceLocator(),
       ),
     );
 }
