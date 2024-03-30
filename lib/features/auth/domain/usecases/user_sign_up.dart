@@ -3,7 +3,7 @@ import 'package:blog_app/core/usecase/usercase.dart';
 import 'package:blog_app/features/auth/domain/repository/auth-repository.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../entities/user.dart';
+import '../../../../core/common/entities/user.dart';
 // import 'package:supabase_flutter/supabase_flutter.dart';
 
 class UserSignUp implements UseCase<User, UserSignUpParams> {
