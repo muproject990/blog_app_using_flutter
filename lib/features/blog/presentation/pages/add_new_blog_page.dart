@@ -89,8 +89,9 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                           },
                           child: Chip(
                             color: selectedTopics.contains(e)
-                                ? MaterialStatePropertyAll(
+                                ? const MaterialStatePropertyAll(
                                     AppPallete.gradient1,
+                                    
                                   )
                                 : null,
                             label: Text(e),
