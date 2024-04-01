@@ -13,6 +13,8 @@ class AppTheme {
   static final darkThemeMode = ThemeData.dark().copyWith(
     appBarTheme: const AppBarTheme(backgroundColor: AppPallete.backgroundColor),
     scaffoldBackgroundColor: AppPallete.backgroundColor,
+
+    // ! Chip Theme Data
     chipTheme: const ChipThemeData(
       color: MaterialStatePropertyAll(
         AppPallete.backgroundColor,
