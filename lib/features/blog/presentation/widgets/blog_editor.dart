@@ -15,6 +15,12 @@ class BlogEditor extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
+        validator: (value) {
+          if (value!.trim().isEmpty) {
+            return '$hintText is missing!';
+          }
+          return null;
+        },
         maxLines: null,
         controller: controller,
         decoration: InputDecoration(
