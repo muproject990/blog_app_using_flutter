@@ -21,6 +21,7 @@ class AddNewBlogPage extends StatefulWidget {
 class _AddNewBlogPageState extends State<AddNewBlogPage> {
   final titleController = TextEditingController();
   final contentController = TextEditingController();
+  
   List<String> selectedTopics = [];
   File? image;
 
