@@ -33,7 +33,7 @@ class BlogRepositoryImpl implements BlogRepository {
         updatedAt: DateTime.now(),
         posterId: posterId,
       );
-// uploaded to supbase storage 
+// uploaded to supbase storage
       final imageUrl = await blogRemoteDataSource.uploadBlogImage(
         image: image,
         blog: blogModel,
@@ -44,7 +44,7 @@ class BlogRepositoryImpl implements BlogRepository {
       );
 
       final uploadedBlog = await blogRemoteDataSource.uploadBlog(blogModel);
-      // Return uploadedBlog when success
+      // Return must recent  uploadedBlog when success
       return right(uploadedBlog);
     } on ServerException catch (e) {
       return left(Failure(e.message));
