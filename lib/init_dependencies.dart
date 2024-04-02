@@ -95,7 +95,7 @@ void _initBlog() {
     // Block
     ..registerLazySingleton(
       () => BlogBloc(
-        serviceLocator(),
+        uploadBlog: serviceLocator(),
       ),
     );
 }
