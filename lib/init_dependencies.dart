@@ -14,6 +14,7 @@ final serviceLocator = GetIt.instance;
 
 Future<void> init_dependencies() async {
   _initAuth();
+  // _initBlog()
   final supabase = await Supabase.initialize(
     url: AppSecrets.supabaseUrl,
     anonKey: AppSecrets.supabaseAnnonKey,
@@ -65,3 +66,4 @@ void _initAuth() {
       ),
     );
 }
+
