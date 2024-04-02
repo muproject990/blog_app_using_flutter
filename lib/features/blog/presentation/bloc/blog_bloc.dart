@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:blog_app/features/blog/domain/entities/blog.dart';
 import 'package:meta/meta.dart';
 
 part 'blog_event.dart';

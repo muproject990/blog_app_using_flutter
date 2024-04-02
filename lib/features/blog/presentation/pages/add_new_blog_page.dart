@@ -1,9 +1,12 @@
 import 'dart:io';
 
 import 'package:blog_app/core/common/cubits/app_user/app_user_cubit.dart';
+import 'package:blog_app/core/common/widgets/loader.dart';
 import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/core/utils/pick_image.dart';
+import 'package:blog_app/core/utils/show-snackbar.dart';
 import 'package:blog_app/features/blog/presentation/bloc/blog_bloc.dart';
+import 'package:blog_app/features/blog/presentation/pages/blog_page.dart';
 import 'package:blog_app/features/blog/presentation/widgets/blog_editor.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -78,11 +81,22 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
           ),
         ],
       ),
-      body: BlocConsumer<BlocBloc, BlocState>(
+      body: BlocConsumer<BlogBloc, BlogState>(
         listener: (context, state) {
-          if (state is BlogFailure) {}
+          if (state is BlogFailure) {
+            showSnackBar(context, state.error);
+          } else if (state is BlogUploadSuccess) {
+            Navigator.pushAndRemoveUntil(
+                context, BlogPage.route(), (route) => false);
+          }
         },
         builder: (context, state) {
+          // !Loading state
+
+          if (state is BlogLoading) {
+            return const Loader();
+          }
+
           return SingleChildScrollView(
             child: Form(
               key: formKey,
