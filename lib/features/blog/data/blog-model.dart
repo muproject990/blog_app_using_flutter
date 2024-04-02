@@ -9,6 +9,7 @@ class BlogModel extends Blog {
     required super.topics,
     required super.updatedAt,
     required super.posterId,
+    super.posterName,
   });
 
   Map<String, dynamic> toJson() {
@@ -47,15 +48,17 @@ class BlogModel extends Blog {
     String? imageUrl,
     List<String>? topics,
     DateTime? updatedAt,
+    //when we have to work beyound ecpectations
+    String? posterName,
   }) {
     return BlogModel(
-      id: id ?? this.id,
-      posterId: posterId ?? this.posterId,
-      title: title ?? this.title,
-      content: content ?? this.content,
-      imageUrl: imageUrl ?? this.imageUrl,
-      topics: topics ?? this.topics,
-      updatedAt: updatedAt ?? this.updatedAt,
-    );
+        id: id ?? this.id,
+        posterId: posterId ?? this.posterId,
+        title: title ?? this.title,
+        content: content ?? this.content,
+        imageUrl: imageUrl ?? this.imageUrl,
+        topics: topics ?? this.topics,
+        updatedAt: updatedAt ?? this.updatedAt,
+        posterName: posterName ?? this.posterId);
   }
 }
