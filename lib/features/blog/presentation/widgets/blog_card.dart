@@ -13,7 +13,7 @@ class BlogCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, BlogViewerPage.route());
+        Navigator.push(context, BlogViewerPage.route(blog));
       },
       child: Container(
         margin: const EdgeInsets.all(16).copyWith(bottom: 4),
