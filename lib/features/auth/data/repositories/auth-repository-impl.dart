@@ -1,7 +1,7 @@
 import 'package:blog_app/core/error/exception.dart';
 import 'package:blog_app/core/error/failure.dart';
+import 'package:blog_app/core/network/conncetion_checker.dart';
 import 'package:blog_app/features/auth/data/datasources/auth-remote-data-source.dart';
-import 'package:blog_app/features/auth/data/models/user-model.dart';
 import 'package:blog_app/core/common/entities/user.dart';
 import 'package:blog_app/features/auth/domain/repository/auth-repository.dart';
 import 'package:fpdart/fpdart.dart';
@@ -10,8 +10,8 @@ import 'package:supabase_flutter/supabase_flutter.dart' as sb;
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
-
-  const AuthRepositoryImpl(this.remoteDataSource);
+  final ConnectionChecker connectionChecker;
+  const AuthRepositoryImpl(this.remoteDataSource, this.connectionChecker);
 
   @override
   Future<Either<Failure, User>> currentUser() async {
@@ -21,7 +21,6 @@ class AuthRepositoryImpl implements AuthRepository {
         return left(Failure("User not logged in!"));
       }
       return right(user);
-      
     } on ServerException catch (e) {
       return left(Failure(e.message));
     }
@@ -62,6 +61,10 @@ class AuthRepositoryImpl implements AuthRepository {
     Future<User> Function() fn,
   ) async {
     try {
+      if (!await (connectionChecker.isConnected)) {
+        
+        left(Failure("No internet Connection"));
+      }
       final user = await fn();
       return right(user);
     } on sb.AuthException catch (e) {
