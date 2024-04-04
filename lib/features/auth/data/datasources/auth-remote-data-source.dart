@@ -8,7 +8,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 // ! create a Interface class which will implemented In Future   !!!!!!!!!!!!!!!!!
 // !------------ ------------------------------------------------------------------
 abstract interface class AuthRemoteDataSource {
-  Session? get currentUserSession;
+  final SupabaseClient supabaseClient;
+
+  AuthRemoteDataSource(this.supabaseClient);
+  Session? get currentUserSession => supabaseClient.auth.currentSession;
 
   Future<UserModel> loginWithEmailPassword({
     // required String name,
